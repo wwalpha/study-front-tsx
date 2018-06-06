@@ -1,3 +1,3 @@
-# Study Front Typescript Version
+# Study Front TypeScript Version
 * Ver 2.0 -> Ver 3.0
-* Javascript -> Typescript
+* JavaScript -> TypeScript

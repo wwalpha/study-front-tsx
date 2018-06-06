@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "lib": [
+      "es5",
+      "es6",
+      "es2015.promise"
+    ],
+    "jsx": "react",
+    "baseUrl": ".",
+    "removeComments": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "paths": {
+      "src/*": [
+        "./src/*"
+      ],
+      "dynamodb/*": [
+        "./src/utils/dynamodb/*"
+      ]
+    }
+  },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

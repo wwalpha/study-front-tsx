@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
+    "rootDirs": [
+      "./src",
+      "./typings"
+    ],
     "outDir": "dist",
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "sourceMap": true,
     "lib": [
       "es5",
       "es6",
-      "es2015.promise"
+      "es2015.promise",
+      "dom"
     ],
     "jsx": "react",
     "baseUrl": ".",
@@ -20,15 +25,16 @@
     "paths": {
       "src/*": [
         "./src/*"
-      ],
-      "dynamodb/*": [
-        "./src/utils/dynamodb/*"
       ]
     }
   },
   "compileOnSave": true,
   "include": [
     "src/**/*"
+  ],
+  "files": [
+    "./node_modules/@material-ui/core/index.d.ts",
+    "./typings/index.d.ts"
   ],
   "exclude": [
     "node_modules",

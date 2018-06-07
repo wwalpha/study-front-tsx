@@ -1,45 +1,57 @@
 const path = require('path');
-const Webpack = require('webpack');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  target: 'node',
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './index.tsx',
+  ],
   output: {
-    libraryTarget: 'commonjs2',
-    filename: 'GetNewList.js',
-    path: path.resolve(__dirname, '../../build/words'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '../build'),
+    publicPath: '/',
   },
-  entry: './src/words/GetNewList.ts',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      src: path.resolve(__dirname, '../src/'),
+    },
+  },
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: 'ts-loader',
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'source-map-loader',
+        enforce: 'pre',
+      },
     ]
   },
-  externals: ['aws-sdk'],
-  resolve: {
-    extensions: [
-      '.ts', '.tsx', '.js'
-    ],
-    alias: {
-      src: path.resolve(__dirname, '../src/'),
-      dynamodb: path.resolve(__dirname, '../src/utils/dynamodb/'),
-    },
-  },
   plugins: [
-    new Webpack.NoEmitOnErrorsPlugin(),
-    new Webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production') // 環境変数はwebpackで展開されるので、ここで設定します
-      }
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Study Front',
+      filename: 'index.html',
+      template: path.join(__dirname, '../index.template.ejs'),
+      minify: false,
+      hash: true,
+      inject: 'body',
     }),
-    new Webpack.LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
       debug: false
     })
   ],
   bail: true,
-}
+};
+
+// externals: ['aws-sdk'],
+

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LoginProps } from 'typings';
+import { RegisterProps } from 'typings';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,9 +7,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import withRoot from '../../withRoot';
+import { Link } from 'react-router-dom';
 
-class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
+class Register extends React.Component<RegisterProps & WithStyles<StyleRules>, any> {
 
   render() {
     const { classes } = this.props;
@@ -17,11 +17,20 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
     return (
       <Card classes={{ root: classes.root }}>
         <CardContent classes={{ root: classes.cardContent }}>
-          <Grid container>
+          <Grid container spacing={8}>
             <Grid item xs={12}>
               <Typography align="center" variant="headline">
-                Log into your account
+                Register your account
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="name"
+                label="Name"
+                margin="normal"
+                required
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -39,48 +48,30 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
                 margin="normal"
                 required
                 fullWidth
-                type="password"
               />
             </Grid>
-          </Grid>
-          <Button
-            color="primary"
-            style={{ float: 'right' }}
-            size="small"
-            classes={{
-              label: classes.forget,
-            }}
-          >
-            Forgot your password?
-          </Button>
-          <Grid
-            container
-            spacing={16}
-          >
-            <Grid item xs={12} >
-              <Button variant="contained" color="primary" fullWidth>
-                Login
-              </Button>
-            </Grid>
-            <Grid item xs={12} classes={{ item: classes.register }}>
-              <Typography align="center" variant="subheading">
-                Don't you have an account?
-              </Typography>
-            </Grid>
-            <Grid item xs={12} >
-              <Button
-                variant="contained"
-                color="secondary"
+            <Grid item xs={12}>
+              <TextField
+                id="confirmPassword"
+                label="Confirm Password"
+                margin="normal"
+                required
                 fullWidth
-                onClick={() => this.props.history.push('/register')}
-              >
-                Register for free!
+              />
+            </Grid>
+            <Grid item xs={12} classes={{ item: classes.createBtn }}>
+              <Button variant="contained" color="primary" fullWidth>
+                CREATE ACCOUNT
               </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography align="center" variant="body2">
+                Already have an account? <Link className={classes.loginLink} to="/">Login</Link>
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
-
-      </Card>
+      </Card >
     );
   }
 }
@@ -88,21 +79,18 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
 const styles: StyleRules = {
   root: {
     maxWidth: '496px',
-    width: 'calc(100% - 48px)',
+    width: 'calc(100% - 3rem)',
   },
   cardContent: {
-    padding: '2rem',
+    padding: '1rem',
   },
-  forget: {
-    fontSize: '0.5rem',
+  createBtn: {
+    marginTop: '2rem',
   },
-  register: {
-    paddingBottom: '0 !important',
-  },
-  headerContent: {
-    justifyContent: 'center',
-    alignItems: 'center'
+  loginLink: {
+    textDecoration: 'none',
+    color: 'rgb(25, 118, 210)'
   }
 };
 
-export default withRoot(withStyles(styles)<LoginProps>(Login));
+export default withStyles(styles)<RegisterProps>(Register);

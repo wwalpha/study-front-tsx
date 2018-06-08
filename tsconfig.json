@@ -34,7 +34,9 @@
   ],
   "files": [
     "./node_modules/@material-ui/core/index.d.ts",
-    "./typings/index.d.ts"
+    "./node_modules/connected-react-router/index.d.ts",
+    "./typings/index.d.ts",
+    "./typings/redux-api-middeware.d.ts"
   ],
   "exclude": [
     "node_modules",

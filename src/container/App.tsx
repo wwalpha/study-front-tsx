@@ -2,29 +2,37 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import { AppProps } from 'typings';
 import Grid from '@material-ui/core/Grid';
-
 import Login from 'src/components/login/Login';
+import withRoot from 'src/withRoot';
+import { WithStyles, StyleRulesCallback, withStyles, Theme } from '@material-ui/core';
+import { StyleRules } from '@material-ui/core/styles';
 
-const styles = {
-  height: 'calc(100vh - 16px)',
-};
-class App extends React.Component<AppProps, any> {
+class App extends React.Component<AppProps & WithStyles<StyleRulesCallback>, any> {
 
   render() {
+    const { classes } = this.props;
+
     return (
       <Grid
         container
         spacing={8}
         alignItems="center"
         justify="center"
-        style={styles}
+        classes={{
+          container: classes.root,
+        }}
       >
-        <Grid item>
-          <Login />
-        </Grid>
+        {this.props.children}
       </Grid>
     );
   }
 }
 
-export default hot(module)(App);
+const styles: StyleRulesCallback = (theme: Theme): StyleRules => ({
+  root: {
+    height: 'calc(100vh - 16px)',
+    backgroundColor: theme.palette.grey["300"],
+  }
+});
+
+export default hot(module)(withRoot(withStyles(styles)<AppProps>(App)));

@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
+import { WithTheme } from "@material-ui/core";
+import { RouteComponentProps } from "react-router";
 
-export interface AppProps {
-  children?: ReactNode
+export interface AppProps extends React.Props<{}> {
 }
 
-export interface LoginProps {
-  children?: ReactNode
+export interface LoginProps extends RouteComponentProps<{}>, React.Props<{}> {
+}
+
+export interface RegisterProps {
 }

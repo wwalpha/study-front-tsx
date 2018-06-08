@@ -8,9 +8,11 @@ import Login from './src/components/login/Login';
 import Register from './src/components/login/Register';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+import reducer from './src/reducers';
 
 const history = createBrowserHistory();
 const store = createstore(history);
+const root = document.getElementById('root');
 
 render(
   <Provider store={store}>
@@ -21,5 +23,10 @@ render(
       </App>
     </ConnectedRouter>
   </Provider >,
-  document.getElementById('root'),
+  root,
 );
+
+if (module.hot) {
+  module.hot.accept();
+  module.hot.accept('./src/reducers', () => store.replaceReducer(reducer));
+}

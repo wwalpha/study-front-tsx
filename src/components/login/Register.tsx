@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { RegisterProps } from 'typings';
+import { Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 
 class Register extends React.Component<RegisterProps & WithStyles<StyleRules>, any> {
 
@@ -82,15 +83,15 @@ const styles: StyleRules = {
     width: 'calc(100% - 3rem)',
   },
   cardContent: {
-    padding: '1rem',
+    padding: '2rem',
   },
   createBtn: {
     marginTop: '2rem',
   },
   loginLink: {
     textDecoration: 'none',
-    color: 'rgb(25, 118, 210)'
-  }
+    color: 'rgb(25, 118, 210)',
+  },
 };
 
-export default withStyles(styles)<RegisterProps>(Register);
+export default hot(module)(withStyles(styles)<RegisterProps>(Register));

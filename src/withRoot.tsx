@@ -20,7 +20,9 @@ const theme = createMuiTheme({
   },
 });
 
+// tslint:disable-next-line:variable-name
 function withRoot(Component: any): (props: any) => any {
+  // tslint:disable-next-line:function-name
   function WithRoot(props: any) {
     // MuiThemeProvider makes the theme available down the React tree
     // thanks to React context.

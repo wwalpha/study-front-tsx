@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './index.tsx',
+    './index',
   ],
   output: {
     filename: 'bundle.js',
@@ -25,7 +25,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: ['babel-loader', 'ts-loader'],
       },
       {
         test: /\.js$/,

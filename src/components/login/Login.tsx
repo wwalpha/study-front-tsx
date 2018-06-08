@@ -101,8 +101,8 @@ const styles: StyleRules = {
   },
   headerContent: {
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 };
 
 export default withRoot(withStyles(styles)<LoginProps>(Login));

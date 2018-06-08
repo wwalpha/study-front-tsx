@@ -31,8 +31,8 @@ class App extends React.Component<AppProps & WithStyles<StyleRulesCallback>, any
 const styles: StyleRulesCallback = (theme: Theme): StyleRules => ({
   root: {
     height: 'calc(100vh - 16px)',
-    backgroundColor: theme.palette.grey["300"],
-  }
+    backgroundColor: theme.palette.grey['300'],
+  },
 });
 
 export default hot(module)(withRoot(withStyles(styles)<AppProps>(App)));

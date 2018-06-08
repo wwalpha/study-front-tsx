@@ -5,20 +5,20 @@
       "./typings"
     ],
     "outDir": "dist",
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
+    "jsx": "react",
     "sourceMap": true,
+    "noImplicitAny": true,
     "lib": [
       "es5",
       "es6",
       "es2015.promise",
       "dom"
     ],
-    "jsx": "react",
     "baseUrl": ".",
     "removeComments": true,
     "allowJs": true,
-    "noImplicitAny": true,
     "strictNullChecks": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

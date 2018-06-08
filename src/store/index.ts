@@ -10,13 +10,9 @@ const store = (history: History): Store<any> => createStore(
   compose(
     applyMiddleware(
       routerMiddleware(history), // for dispatching history actions
-      api
+      api,
     ),
   ),
 );
-
-// if(module.hot) {
-//   module.hot.accept('../reducers', () => store.replaceReducer(reducer));
-// }
 
 export default store;

@@ -21,58 +21,36 @@ class Register extends React.Component<RegisterProps & WithStyles<StyleRules>, a
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <Typography align="center" variant="headline">
-                Register your account
+                Confirm Sign Up
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography align="left" variant="body1">
+                wwalpha@gmail.com
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="name"
-                label="Name"
+                id="code"
+                label="Verification Code "
                 margin="dense"
                 required
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="email"
-                label="Email"
-                margin="dense"
-                required
-                fullWidth
-              />
+            <Grid item xs={6} classes={{ item: classes.createBtn }}>
+              <Button variant="contained" color="primary" component={(props: any) => <Link to="/" {...props} />}>
+                Confirm
+              </Button>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="password"
-                label="Password"
-                margin="dense"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="confirmPassword"
-                label="Confirm Password"
-                margin="dense"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} classes={{ item: classes.createBtn }}>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                component={(props: any) => <Link to="/confirm" {...props} />}
-              >
-                CREATE ACCOUNT
+            <Grid item xs={6} classes={{ item: classes.createBtn }}>
+              <Button variant="contained" color="primary">
+                Resend Code
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Typography align="center" variant="body2">
-                Already have an account? <Link className={classes.loginLink} to="/">Login</Link>
+              <Typography align="left" variant="body2">
+                <Link className={classes.loginLink} to="/">Back to Signin</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -91,6 +69,8 @@ const styles: StyleRules = {
     padding: '2rem',
   },
   createBtn: {
+    display: 'flex',
+    justifyContent: 'center',
     marginTop: '1rem',
   },
   loginLink: {
@@ -99,4 +79,4 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<RegisterProps>(Register));
+export default withStyles(styles)<RegisterProps>(Register);

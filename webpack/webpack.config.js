@@ -24,8 +24,20 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'ts-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                '@babel/plugin-syntax-typescript',
+                '@babel/plugin-syntax-decorators',
+                '@babel/plugin-syntax-jsx',
+                'react-hot-loader/babel',
+              ],
+            },
+          },
+          'ts-loader',
+        ],
       },
       {
         test: /\.js$/,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { LoginProps } from 'typings';
+import { Link } from 'react-router-dom';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -27,7 +28,7 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
               <TextField
                 id="email"
                 label="Email"
-                margin="normal"
+                margin="dense"
                 required
                 fullWidth
               />
@@ -36,7 +37,7 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
               <TextField
                 id="password"
                 label="Password"
-                margin="normal"
+                margin="dense"
                 required
                 fullWidth
                 type="password"
@@ -50,6 +51,7 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
             classes={{
               label: classes.forget,
             }}
+            component={(props: any) => <Link to="/forgot" {...props} />}
           >
             Forgot your password?
           </Button>
@@ -72,7 +74,7 @@ class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
                 variant="contained"
                 color="secondary"
                 fullWidth
-                onClick={() => this.props.history.push('/register')}
+                component={(props: any) => <Link to="/register" {...props} />}
               >
                 Register for free!
               </Button>

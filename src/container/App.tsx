@@ -35,4 +35,4 @@ const styles: StyleRulesCallback = (theme: Theme): StyleRules => ({
   },
 });
 
-export default hot(module)(withRoot(withStyles(styles)<AppProps>(App)));
+export default withRoot(withStyles(styles)<AppProps>(App));

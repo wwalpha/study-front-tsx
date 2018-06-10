@@ -2,12 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+configs = {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: [
+    './index.tsx',
     'webpack-hot-middleware/client',
-    './index',
   ],
   output: {
     filename: 'bundle.js',
@@ -28,6 +28,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               plugins: [
                 '@babel/plugin-syntax-typescript',
                 '@babel/plugin-syntax-decorators',
@@ -67,3 +68,4 @@ module.exports = {
 
 // externals: ['aws-sdk'],
 
+module.exports = configs;

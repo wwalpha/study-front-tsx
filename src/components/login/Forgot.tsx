@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ForgotProps } from 'typings';
+import { Props } from 'typings';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-class Forgot extends React.Component<ForgotProps & WithStyles<StyleRules>, any> {
+class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>, any> {
 
   render() {
     const { classes } = this.props;
@@ -76,4 +76,4 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<ForgotProps>(Forgot));
+export default hot(module)(withStyles(styles)<Props.ForgotProps>(Forgot));

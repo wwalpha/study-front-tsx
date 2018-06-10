@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LoginProps } from 'typings';
+import { Props } from 'typings';
 import { Link } from 'react-router-dom';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import withRoot from '../../withRoot';
 
-class Login extends React.Component<LoginProps & WithStyles<StyleRules>, any> {
+class SignIn extends React.Component<Props.SignInProps & WithStyles<StyleRules>, any> {
 
   render() {
     const { classes } = this.props;
@@ -107,4 +107,4 @@ const styles: StyleRules = {
   },
 };
 
-export default withRoot(withStyles(styles)<LoginProps>(Login));
+export default withRoot(withStyles(styles)<Props.SignInProps>(SignIn));

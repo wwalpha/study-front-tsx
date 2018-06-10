@@ -18,6 +18,7 @@ configs = {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
       src: path.resolve(__dirname, '../src/'),
+      reduxform: path.resolve(__dirname, '../src/components/reduxform/'),
     },
   },
   module: {
@@ -67,5 +68,6 @@ configs = {
 };
 
 // externals: ['aws-sdk'],
+console.error(configs);
 
 module.exports = configs;

@@ -4,19 +4,27 @@ import { render } from 'react-dom';
 import { Route } from 'react-router-dom';
 import createstore from './src/store';
 import App from './src/container/App';
-import Login from './src/components/login/Login';
-import Register from './src/components/login/Register';
+import Login from './src/components/login/SignIn';
+import Register from './src/components/login/SignUp';
 import Confirm from './src/components/login/Confirm';
 import Forgot from './src/components/login/Forgot';
 import ForgotRenew from './src/components/login/ForgotRenew';
 import { ConnectedRouter, connectRouter } from 'connected-react-router/immutable';
-
 import { createBrowserHistory } from 'history';
 import reducer from './src/reducers';
+import Amplify from 'aws-amplify';
 
 const history = createBrowserHistory();
 const store = createstore(history);
 const root = document.getElementById('root');
+
+Amplify.configure({
+  Auth: {
+    region: 'ap-northeast-1',
+    userPoolId: 'ap-northeast-1_GXUriRkpY',
+    userPoolWebClientId: '4bp5nqfb6kp1ddk0moq4tl23a8',
+  },
+});
 
 render(
   <Provider store={store}>

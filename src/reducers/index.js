@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux-immutable';
 import { reducer as formReducer } from 'redux-form/immutable';
-import app from './app';
+import auth from './auth';
 // import word from './word';
 
 export default combineReducers({
   form: formReducer,
-  app,
+  auth,
   // word,
 });

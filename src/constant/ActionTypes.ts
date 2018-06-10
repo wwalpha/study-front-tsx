@@ -1,0 +1,51 @@
+// ログイン
+export const SIGN_IN_SUCCESS: string = 'SIGN_IN_SUCCESS';
+export const SIGN_IN_FAILURE: string = 'SIGN_IN_FAILURE';
+
+// 登録
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+
+// 登録確認
+export const CONFIRM_SIGN_UP_SUCCESS = 'CONFIRM_SIGN_UP_SUCCESS';
+export const CONFIRM_SIGN_UP_FAILURE = 'CONFIRM_SIGN_UP_FAILURE';
+
+// ログアウト
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
+
+// パスワード変更
+export const CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
+export const CHANGE_PASSWORD_FAILURE = 'CHANGE_PASSWORD_FAILURE';
+
+// パスワード忘れ
+export const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';
+export const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
+
+export const FORGOT_PASSWORD_SUBMIT_SUCCESS = 'FORGOT_PASSOWRD_SUBMIT_SUCCESS';
+export const FORGOT_PASSWORD_SUBMIT_FAILURE = 'FORGOT_PASSWORD_SUBMIT_FAILURE';
+
+// export const DUMMY_REQUEST = 'DUMMY_REQUEST';
+// export const DUMMY_SUCCESS = 'DUMMY_SUCCESS';
+// export const DUMMY_FAILED = 'DUMMY_FAILED';
+
+// export const NEXT_REQUEST = 'NEXT_REQUEST';
+// export const NEXT_SUCCESS = 'NEXT_SUCCESS';
+// export const NEXT_FAILED = 'NEXT_FAILED';
+
+// export const SAVE_REQUEST = 'SAVE_REQUEST';
+// export const SAVE_SUCCESS = 'SAVE_SUCCESS';
+// export const SAVE_FAILED = 'SAVE_FAILED';
+
+// export const RESET_SUCCESS = 'RESET_SUCCESS';
+
+// export const USERS_REQUEST = 'USERS_REQUEST';
+// export const USERS_SUCCESS = 'USERS_SUCCESS';
+// export const USERS_FAILED = 'USERS_FAILED';
+
+// export const PREV_PAGE = 'PREV_PAGE';
+// export const NEXT_PAGE = 'NEXT_PAGE';
+// export const SELECT_USER = 'SELECT_USER';
+
+// export const CHECKED = 'CHECKED';
+// export const FAVORITE = 'FAVORITE';

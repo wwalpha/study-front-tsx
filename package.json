@@ -2,7 +2,7 @@
   "name": "studyfront",
   "version": "3.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "dev": "node server.js",
     "build": "cross-env API_URL=http://52.192.77.235 webpack --config ./webpack/webpack.config.js",
@@ -15,6 +15,7 @@
     "@babel/plugin-syntax-decorators": "^7.0.0-beta.49",
     "@babel/plugin-syntax-jsx": "^7.0.0-beta.49",
     "@babel/plugin-syntax-typescript": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
     "@types/webpack-env": "^1.13.6",
     "babel-loader": "^8.0.0-beta.3",
     "cross-env": "^5.1.6",
@@ -31,7 +32,6 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.0.0-beta.49",
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
     "@types/node": "10.1.2",
@@ -41,7 +41,6 @@
     "@types/react-router-dom": "^4.2.7",
     "@types/redux-form": "^7.2.6",
     "aws-amplify": "^0.4.4",
-    "aws-amplify-react": "^0.1.50",
     "connected-react-router": "^4.3.0",
     "graphql": "0.13.0",
     "history": "^4.7.2",

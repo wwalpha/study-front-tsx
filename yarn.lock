@@ -652,6 +652,10 @@
   dependencies:
     csstype "^2.2.0"
 
+"@types/redux-actions@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-2.3.0.tgz#d28d7913ec86ee9e20ecb33a1fed887ecb538149"
+
 "@types/redux-form@^7.2.6":
   version "7.2.6"
   resolved "https://registry.yarnpkg.com/@types/redux-form/-/redux-form-7.2.6.tgz#442cdf28b1626a0693202766be2edafc5300b6a5"
@@ -970,14 +974,6 @@ async@^2.5.0:
 atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
-
-aws-amplify-react@^0.1.50:
-  version "0.1.50"
-  resolved "https://registry.yarnpkg.com/aws-amplify-react/-/aws-amplify-react-0.1.50.tgz#e2fbeff9506125e18f7e6bc0b05b5134dd404580"
-  dependencies:
-    aws-amplify "^0.4.4"
-    qrcode.react "^0.8.0"
-    regenerator-runtime "^0.11.1"
 
 aws-amplify@^0.4.4:
   version "0.4.4"
@@ -3672,17 +3668,6 @@ punycode@^1.2.4:
 punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
-
-qr.js@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
-
-qrcode.react@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-0.8.0.tgz#413b31cc3b62910e39513f7bead945e01c4c34fb"
-  dependencies:
-    prop-types "^15.6.0"
-    qr.js "0.0.0"
 
 qs@6.5.1:
   version "6.5.1"

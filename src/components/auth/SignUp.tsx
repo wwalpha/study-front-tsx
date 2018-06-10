@@ -6,11 +6,11 @@ import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { TextField } from 'reduxform/index';
 
-class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>, any> {
+class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules>, any> {
 
   render() {
     const { classes } = this.props;
@@ -21,8 +21,17 @@ class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>,
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <Typography align="center" variant="headline">
-                Forgot Password
+                Register your account
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="name"
+                label="Name"
+                margin="dense"
+                required
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -33,18 +42,37 @@ class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>,
                 fullWidth
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="password"
+                label="Password"
+                margin="dense"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="confirmPassword"
+                label="Confirm Password"
+                margin="dense"
+                required
+                fullWidth
+              />
+            </Grid>
             <Grid item xs={12} classes={{ item: classes.createBtn }}>
               <Button
                 variant="contained"
                 color="primary"
                 fullWidth
-                component={(props: any) => <Link to="/forgotrenew" {...props} />}>
-                Send Code
+                component={(props: any) => <Link to="/confirm" {...props} />}
+              >
+                CREATE ACCOUNT
               </Button>
             </Grid>
-            <Grid item xs={12} classes={{ item: classes.returnlink }}>
-              <Typography align="left" variant="body2">
-                <Link className={classes.loginLink} to="/">Back to Sign In</Link>
+            <Grid item xs={12}>
+              <Typography align="center" variant="body2">
+                Already have an account? <Link className={classes.loginLink} to="/">Login</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -63,11 +91,6 @@ const styles: StyleRules = {
     padding: '2rem',
   },
   createBtn: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '1rem',
-  },
-  returnlink: {
     marginTop: '1rem',
   },
   loginLink: {
@@ -76,4 +99,4 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.ForgotProps>(Forgot));
+export default hot(module)(withStyles(styles)<Props.SignUpProps>(Register));

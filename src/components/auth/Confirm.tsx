@@ -6,11 +6,14 @@ import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { TextField } from 'reduxform/index';
 
-class ForgotRenew extends React.Component<Props.ForgotRenewProps & WithStyles<StyleRules>, any> {
+class Register extends React.Component<Props.ConfirmProps & WithStyles<StyleRules>, any> {
+
+  test = () => {
+  }
 
   render() {
     const { classes } = this.props;
@@ -21,36 +24,34 @@ class ForgotRenew extends React.Component<Props.ForgotRenewProps & WithStyles<St
           <Grid container spacing={8}>
             <Grid item xs={12}>
               <Typography align="center" variant="headline">
-                Forgot Password
+                Confirm Sign Up
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography align="left" variant="body1">
+                wwalpha@gmail.com
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <TextField
                 id="code"
-                label="Verification Code"
+                label="Verification Code "
                 margin="dense"
+                required
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="password"
-                label="New Password"
-                margin="dense"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} classes={{ item: classes.createBtn }}>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                component={(props: any) => <Link to="/" {...props} />}
-              >
-                Submit
+            <Grid item xs={6} classes={{ item: classes.createBtn }}>
+              <Button variant="contained" color="primary" component={(props: any) => <Link to="/" {...props} />}>
+                Confirm
               </Button>
             </Grid>
-            <Grid item xs={12} classes={{ item: classes.returnlink }}>
+            <Grid item xs={6} classes={{ item: classes.createBtn }}>
+              <Button variant="contained" color="primary">
+                Resend Code
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
               <Typography align="left" variant="body2">
                 <Link className={classes.loginLink} to="/">Back to Signin</Link>
               </Typography>
@@ -75,13 +76,10 @@ const styles: StyleRules = {
     justifyContent: 'center',
     marginTop: '1rem',
   },
-  returnlink: {
-    marginTop: '1rem',
-  },
   loginLink: {
     textDecoration: 'none',
     color: 'rgb(25, 118, 210)',
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.ForgotRenewProps>(ForgotRenew));
+export default hot(module)(withStyles(styles)<Props.ConfirmProps>(Register));

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose, Store } from 'redux';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { apiMiddleware as api } from 'redux-api-middleware';
 import { History } from 'history';
 import reducer from '../reducers';

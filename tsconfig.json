@@ -34,10 +34,9 @@
     "index.tsx",
   ],
   "files": [
-    "./node_modules/@material-ui/core/index.d.ts",
-    "./node_modules/connected-react-router/index.d.ts",
     "./typings/types.d.ts",
-    "./typings/index.d.ts"
+    "./typings/index.d.ts",
+    "./typings/external.d.ts"
   ],
   "exclude": [
     "node_modules",

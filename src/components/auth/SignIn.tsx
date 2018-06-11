@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props } from 'typings';
+import { SignIn, IState } from 'typings';
 import { Link } from 'react-router-dom';
 import { FormErrors } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
@@ -11,11 +11,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 import withRoot from '../../withRoot';
-import * as actions from 'src/actions/auth';
+import * as AuthActions from 'src/actions/auth';
+import { connect, MapDispatchToProps, Dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class SignIn extends React.Component<Props.SignInFormProps & WithStyles<StyleRules>, any> {
 
-  signIn = (data: Props.SignInProps) => {
+class CSignIn extends React.Component<SignIn.FormProps & WithStyles<StyleRules>, any> {
+
+  signIn = (data: SignIn.Props) => {
 
   }
 
@@ -97,8 +100,8 @@ class SignIn extends React.Component<Props.SignInFormProps & WithStyles<StyleRul
 }
 
 // 入力値チェック
-const validate = (values: Props.SignInProps, props: Props.SignInFormProps): FormErrors<Props.SignInProps> => {
-  const errors: FormErrors<Props.SignInProps> = {};
+const validate = (values: SignIn.Props, props: SignIn.FormProps): FormErrors<SignIn.Props> => {
+  const errors: FormErrors<SignIn.Props> = {};
 
   return errors;
 };
@@ -107,7 +110,7 @@ const validate = (values: Props.SignInProps, props: Props.SignInFormProps): Form
 const signIn = reduxForm({
   form: 'signIn',
   validate,
-})(SignIn);
+})(CSignIn);
 
 const styles: StyleRules = {
   root: {
@@ -129,4 +132,27 @@ const styles: StyleRules = {
   },
 };
 
-export default withRoot(withStyles(styles)<Props.SignInFormProps>(signIn));
+const mapStateToProps = (state: IState): SignIn.StateToProps => ({
+  username: state.auth.username,
+});
+
+// const mapDispatchToProps: MapDispatchToProps<{}, void> = (dispatch: Dispatch) => ({
+//   actions: bindActionCreators(AuthActions, dispatch),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   actions: bindActionCreators(MenuActions, dispatch),
+//   formSet: (field, value) => dispatch(change('menubar', field, value)),
+// });
+
+export default connect<SignIn.StateProps, SignIn.DispatchProps, {}>(
+  mapStateToProps,
+)(SignIn);
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps,
+// )(withStyles(styles)(menubar));
+
+
+// export default withRoot(withStyles(styles)<Props.SignInFormProps>(signIn));

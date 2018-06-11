@@ -1,12 +1,12 @@
-import { Models } from 'typings';
 import { Record } from 'immutable';
+import { Models } from 'typings';
 
 export default class Auth extends Record<Models.AuthProps>({
-  user: undefined,
+  username: undefined,
 }) {
 
   signIn(user: any) {
     console.log('sign:', user);
-    return this.set('user', user);
+    return this.set('username', user);
   }
 }

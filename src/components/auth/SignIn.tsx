@@ -16,7 +16,7 @@ import { connect, MapDispatchToProps, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
-class CSignIn extends React.Component<SignIn.FormProps & WithStyles<StyleRules>, any> {
+class CSignIn extends React.Component<SignIn.FormProps, any> {
 
   signIn = (data: SignIn.Props) => {
 
@@ -132,27 +132,14 @@ const styles: StyleRules = {
   },
 };
 
-const mapStateToProps = (state: IState): SignIn.StateToProps => ({
-  username: state.auth.username,
+const mapStateToProps = (state: IState): SignIn.Props => ({
 });
 
-// const mapDispatchToProps: MapDispatchToProps<{}, void> = (dispatch: Dispatch) => ({
-//   actions: bindActionCreators(AuthActions, dispatch),
-// });
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(AuthActions, dispatch),
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   actions: bindActionCreators(MenuActions, dispatch),
-//   formSet: (field, value) => dispatch(change('menubar', field, value)),
-// });
-
-export default connect<SignIn.StateProps, SignIn.DispatchProps, {}>(
+export default connect(
   mapStateToProps,
-)(SignIn);
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(withStyles(styles)(menubar));
-
-
-// export default withRoot(withStyles(styles)<Props.SignInFormProps>(signIn));
+  mapDispatchToProps,
+)(withStyles(styles)(CSignIn));

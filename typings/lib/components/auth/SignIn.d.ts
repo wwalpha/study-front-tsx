@@ -1,13 +1,15 @@
 import { InjectedFormProps, FormErrors } from "redux-form";
-import { Dispatch, MapStateToPropsParam, MapDispatchToProps } from "react-redux";
+import { Dispatch, MapStateToPropsParam, MapDispatchToProps, InferableComponentEnhancerWithProps } from "react-redux";
 import { IState } from '../../store'
+import { WithStyles, StyleRules } from "@material-ui/core/styles";
+import { ComponentType } from "react";
 
 export interface Props extends React.Props<{}> {
-  username: string,
-  password: string,
+  username?: string,
+  password?: string,
 }
 
-export interface FormProps extends InjectedFormProps<Props, {}> {
+export interface FormProps extends InjectedFormProps<Props, {}>, WithStyles<StyleRules> {
   dispatch?: Dispatch<any>;
   onSubmit: (values: Props, dispatch: Dispatch<any>, props: FormProps) => void | FormErrors<FormData> | Promise<any>;
 }

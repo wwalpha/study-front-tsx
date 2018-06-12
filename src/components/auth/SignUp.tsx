@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { Props } from 'typings';
+import { bindActionCreators } from 'redux';
+import { Dispatch, connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router-dom';
+import { TextField } from 'reduxform/index';
 import { hot } from 'react-hot-loader';
-import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
+import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { TextField } from 'reduxform/index';
+import { ISignUp } from 'typings';
+import * as AuthActions from 'src/actions/auth';
 
-class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules>, any> {
+class SignUp extends React.Component<ISignUp.Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -26,7 +30,7 @@ class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="name"
+                name="username"
                 label="Name"
                 margin="dense"
                 required
@@ -35,7 +39,7 @@ class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="email"
+                name="email"
                 label="Email"
                 margin="dense"
                 required
@@ -44,7 +48,7 @@ class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="password"
+                name="password"
                 label="Password"
                 margin="dense"
                 required
@@ -53,7 +57,7 @@ class Register extends React.Component<Props.SignUpProps & WithStyles<StyleRules
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="confirmPassword"
+                name="confirmPassword"
                 label="Confirm Password"
                 margin="dense"
                 required
@@ -99,4 +103,24 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.SignUpProps>(Register));
+// 入力値チェック
+const validate = (values: ISignUp.Form, props: ISignUp.Props): ISignUp.FormErrors => {
+  const errors: ISignUp.FormErrors = {};
+
+  return errors;
+};
+
+// フォーム定義
+const signUp: ISignUp.ReduxForm = reduxForm({
+  form: 'signUp',
+  validate,
+})(withStyles(styles)(SignUp));
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(AuthActions, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(signUp);

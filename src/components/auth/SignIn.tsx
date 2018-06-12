@@ -1,25 +1,30 @@
 import * as React from 'react';
-import { SignIn, IState } from 'typings';
+import { bindActionCreators } from 'redux';
+import { Dispatch, connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
+import { ISignIn } from 'typings';
 import { Link } from 'react-router-dom';
 import { FormErrors } from 'redux-form';
-import { reduxForm } from 'redux-form/immutable';
-import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
+import { Auth } from 'aws-amplify';
+import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
-import withRoot from '../../withRoot';
 import * as AuthActions from 'src/actions/auth';
-import { connect, MapDispatchToProps, Dispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
+class SignIn extends React.Component<ISignIn.Props, any> {
 
-class CSignIn extends React.Component<SignIn.FormProps, any> {
+  signIn = (values: ISignIn.Form) => {
+    console.error(values);
 
-  signIn = (data: SignIn.Props) => {
+    const { signInSuccess, signInFailure } = this.props.actions;
 
+    Auth.signIn(values.username, values.password)
+      .then(user => signInSuccess(user))
+      .catch(err => signInFailure(err))
   }
 
   render() {
@@ -37,7 +42,7 @@ class CSignIn extends React.Component<SignIn.FormProps, any> {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  id="email"
+                  name="username"
                   label="Email"
                   margin="dense"
                   required
@@ -46,7 +51,7 @@ class CSignIn extends React.Component<SignIn.FormProps, any> {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  id="password"
+                  name="password"
                   label="Password"
                   margin="dense"
                   required
@@ -99,19 +104,6 @@ class CSignIn extends React.Component<SignIn.FormProps, any> {
   }
 }
 
-// 入力値チェック
-const validate = (values: SignIn.Props, props: SignIn.FormProps): FormErrors<SignIn.Props> => {
-  const errors: FormErrors<SignIn.Props> = {};
-
-  return errors;
-};
-
-// フォーム定義
-const signIn = reduxForm({
-  form: 'signIn',
-  validate,
-})(CSignIn);
-
 const styles: StyleRules = {
   root: {
     maxWidth: '496px',
@@ -132,14 +124,24 @@ const styles: StyleRules = {
   },
 };
 
-const mapStateToProps = (state: IState): SignIn.Props => ({
-});
+// 入力値チェック
+const validate = (values: ISignIn.Form, props: ISignIn.Props): FormErrors<ISignIn.Form> => {
+  const errors: FormErrors<ISignIn.Form> = {};
+
+  return errors;
+};
+
+// フォーム定義
+const signIn: ISignIn.ReduxForm = reduxForm({
+  form: 'signIn',
+  validate,
+})(SignIn);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: bindActionCreators(AuthActions, dispatch),
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
-)(withStyles(styles)(CSignIn));
+)(signIn);

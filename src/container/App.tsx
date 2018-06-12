@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
-import { Props } from 'typings';
+import { IApp } from 'typings';
 import Grid from '@material-ui/core/Grid';
 import withRoot from 'src/withRoot';
 import { WithStyles, StyleRulesCallback, withStyles, Theme } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-class App extends React.Component<Props.AppProps & WithStyles<StyleRulesCallback>, any> {
+class App extends React.Component<IApp.Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -34,4 +34,4 @@ const styles: StyleRulesCallback = (theme: Theme): StyleRules => ({
   },
 });
 
-export default hot(module)(withRoot(withStyles(styles)<Props.AppProps>(App)));
+export default hot(module)(withRoot(withStyles(styles)<IApp.Props>(App)));

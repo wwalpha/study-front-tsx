@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props } from 'typings';
+import { IForgot } from 'typings';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 
-class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>, any> {
+class Forgot extends React.Component<IForgot.Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -26,7 +26,7 @@ class Forgot extends React.Component<Props.ForgotProps & WithStyles<StyleRules>,
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="email"
+                name="email"
                 label="Email"
                 margin="dense"
                 required
@@ -76,4 +76,4 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.ForgotProps>(Forgot));
+export default hot(module)(withStyles(styles)<IForgot.Props>(Forgot));

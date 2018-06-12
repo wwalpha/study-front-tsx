@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props } from 'typings';
+import { IForgotRenew } from 'typings';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 
-class ForgotRenew extends React.Component<Props.ForgotRenewProps & WithStyles<StyleRules>, any> {
+class ForgotRenew extends React.Component<IForgotRenew.Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -26,7 +26,7 @@ class ForgotRenew extends React.Component<Props.ForgotRenewProps & WithStyles<St
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="code"
+                name="code"
                 label="Verification Code"
                 margin="dense"
                 fullWidth
@@ -34,7 +34,7 @@ class ForgotRenew extends React.Component<Props.ForgotRenewProps & WithStyles<St
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="password"
+                name="password"
                 label="New Password"
                 margin="dense"
                 fullWidth
@@ -84,4 +84,4 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.ForgotRenewProps>(ForgotRenew));
+export default hot(module)(withStyles(styles)<IForgotRenew.Props>(ForgotRenew));

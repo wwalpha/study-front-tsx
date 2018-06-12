@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Props } from 'typings';
+import { bindActionCreators } from 'redux';
+import { Dispatch, connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
+import { IConfirm } from 'typings';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
@@ -9,11 +12,9 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
+import * as AuthActions from 'src/actions/auth';
 
-class Register extends React.Component<Props.ConfirmProps & WithStyles<StyleRules>, any> {
-
-  test = () => {
-  }
+class Confirm extends React.Component<IConfirm.Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -34,7 +35,7 @@ class Register extends React.Component<Props.ConfirmProps & WithStyles<StyleRule
             </Grid>
             <Grid item xs={12}>
               <TextField
-                id="code"
+                name="code"
                 label="Verification Code "
                 margin="dense"
                 required
@@ -82,4 +83,24 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<Props.ConfirmProps>(Register));
+// 入力値チェック
+const validate = (values: IConfirm.Form, props: IConfirm.Props): IConfirm.FormErrors => {
+  const errors: IConfirm.FormErrors = {};
+
+  return errors;
+};
+
+// フォーム定義
+const confirm: IConfirm.ReduxForm = reduxForm({
+  form: 'confirm',
+  validate,
+})(withStyles(styles)(Confirm));
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(AuthActions, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(confirm);

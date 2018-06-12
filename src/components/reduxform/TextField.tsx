@@ -1,38 +1,45 @@
 import * as React from 'react';
-import { Field } from "redux-form/immutable";
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { Validator } from 'redux-form';
+import { WrappedFieldProps, Field, GenericField, BaseFieldProps } from 'redux-form'
+import { TextFieldProps as MTextFieldProps } from '@material-ui/core/TextField';
+import MTextField from '@material-ui/core/TextField';
+import { Omit } from '@material-ui/core';
 
-export interface RTextFieldProps extends TextFieldProps {
-  validate?: Validator | Validator[];
-}
+type AddedFieldProps = Omit<MTextFieldProps, 'component'>
 
-const renderComp = (props: any) => {
-  console.log(props);
+export type TextFieldProps = BaseFieldProps & AddedFieldProps
+export type WrappedProps = WrappedFieldProps & AddedFieldProps
+
+const FieldNew = Field as new () => GenericField<AddedFieldProps>;
+
+const RenderComp = (props: WrappedProps): any => {
+  const { input, meta, id } = props;
+
+  console.log(input);
   return (
-    <TextField
-      id={props.id}
-      label={props.label}
-      margin={props.margin}
-      required={props.required}
-      fullWidth={props.fullWidth}
-      type={props.type}
+    <MTextField
+      {...props}
+      id={id || `${meta.form}_${input.name}`}
+      value={input.value}
+      onChange={e => input.onChange(e.target.value)}
     />
-  );
+  )
 }
 
-class RTextField extends React.Component<RTextFieldProps, any> {
+class TextField extends React.Component<TextFieldProps, any> {
   render() {
-    const { name, ...props } = this.props;
+    const {
+      name, ...props
+    } = this.props;
 
     return (
-      <Field
+      <FieldNew
+        id={name}
         name={name}
-        component={renderComp}
+        component={RenderComp}
         {...props}
       />
     );
   }
-};
+}
 
-export default RTextField;
+export default TextField;

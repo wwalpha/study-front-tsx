@@ -12,10 +12,8 @@ import {
 } from '../constant/ActionTypes';
 
 /** ログイン */
-export const signIn = (username: string, password: string) =>
-  Auth.signIn(username, password)
-    .then(user => createAction(SIGN_IN_SUCCESS, user))
-    .catch(err => createAction(SIGN_IN_FAILURE, err));
+export const signInSuccess = createAction(SIGN_IN_SUCCESS, (user: any) => user);
+export const signInFailure = createAction(SIGN_IN_FAILURE, (error: any) => error);
 
 /** 登録 */
 export const signUp = (username: string, password: string, email: string, phoneNumber: number) =>

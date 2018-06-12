@@ -135,13 +135,18 @@ const validate = (values: ISignIn.Form, props: ISignIn.Props): FormErrors<ISignI
 const signIn: ISignIn.ReduxForm = reduxForm({
   form: 'signIn',
   validate,
-})(SignIn);
+})(withStyles(styles)(SignIn));
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: bindActionCreators(AuthActions, dispatch),
 });
 
+const mapStateToProps = () => ({
+  initialValues: {
+  },
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(signIn);

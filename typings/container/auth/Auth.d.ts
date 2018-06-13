@@ -1,5 +1,5 @@
 import { WithStyles, StyleRulesCallback } from "@material-ui/core/styles";
-import { RouteComponentProps, RouteProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 
-export interface Props extends WithStyles<StyleRulesCallback>, RouteProps {
+export interface Props extends WithStyles<StyleRulesCallback>, RouteComponentProps<{}> {
 }

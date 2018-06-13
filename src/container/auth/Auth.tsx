@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, withRouter, RouteComponentProps } from 'react-router';
 import { IAuth } from 'typings';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -9,10 +9,11 @@ import ForgotRenew from './ForgotRenew';
 import { StyleRulesCallback, withStyles, Theme, Grid } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-class Auth extends React.Component<IAuth.Props, any> {
+class Auth extends React.Component<IAuth.Props & RouteComponentProps<any>, any> {
 
   render() {
-    const { classes } = this.props;
+    const { classes, location, match } = this.props;
+    console.log(location, match);
 
     return (
       <Grid
@@ -26,7 +27,7 @@ class Auth extends React.Component<IAuth.Props, any> {
       >
         <Switch>
           <Route exact path="/" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
+          <Route path="signup" component={SignUp} />
           <Route path="/confirm" component={Confirm} />
           {/* <Route path={`${match.url}forgot`} component={Forgot} />
           <Route path={`${match.url}forgotrenew`} component={ForgotRenew} /> */} */}
@@ -43,4 +44,4 @@ const styles: StyleRulesCallback = (theme: Theme): StyleRules => ({
   },
 });
 
-export default withStyles(styles)(Auth);
+export default withStyles(styles)(withRouter<IAuth.Props>(Auth));

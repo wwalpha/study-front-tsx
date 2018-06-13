@@ -24,11 +24,11 @@ Amplify.configure({
 
 render(
   <Provider store={store}>
-    <HashRouter>
-      <ConnectedRouter history={history}>
+    <ConnectedRouter history={history}>
+      <HashRouter >
         <App />
-      </ConnectedRouter>
-    </HashRouter>
+      </HashRouter>
+    </ConnectedRouter>
   </Provider >,
   root,
 );

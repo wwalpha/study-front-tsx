@@ -15,7 +15,7 @@ class App extends React.Component<IApp.Props, any> {
     return (
       <React.Fragment>
         <Switch>
-          <Route exact path="/" compoennt={Auth} />
+          <Route exact path="/" component={Auth} />
         </Switch>
       </React.Fragment>
     );

@@ -4,6 +4,8 @@ import { apiMiddleware as api } from 'redux-api-middleware';
 import { History } from 'history';
 import logger from 'redux-logger';
 import reducer from '../reducers';
+import * as Immutable from 'immutable';
+
 
 const store = (history: History): Store<any> => createStore(
   connectRouter(history)(reducer),

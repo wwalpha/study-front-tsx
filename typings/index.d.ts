@@ -1,8 +1,14 @@
-// import * as IState from './lib/models'
-// export { IState };
+import * as Actions from './actions'
+import * as Models from './models'
 
-export * from './lib/components';
-export * from './lib/store';
+export * from './components';
+export * from './store';
+export * from './models';
+
+export {
+  Actions,
+  Models,
+};
 
 export as namespace AWSDemo;
 

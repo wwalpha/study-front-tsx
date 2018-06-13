@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HappyPack = require('happypack');
 
 configs = {
   mode: 'development',
@@ -25,6 +26,7 @@ configs = {
     rules: [
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -38,7 +40,13 @@ configs = {
               ],
             },
           },
-          'ts-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              happyPackMode: true
+            }
+          }
         ],
       },
       {
@@ -50,6 +58,9 @@ configs = {
     ]
   },
   plugins: [
+    // new HappyPack({
+    //   loaders: ['babel-loader', 'ts-loader']
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
@@ -68,6 +79,5 @@ configs = {
 };
 
 // externals: ['aws-sdk'],
-console.error(configs);
 
 module.exports = configs;

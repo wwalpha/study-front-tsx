@@ -4,7 +4,6 @@ import { Dispatch, connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
 import { Link } from 'react-router-dom';
 import { TextField } from 'reduxform/index';
-import { hot } from 'react-hot-loader';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -112,8 +111,8 @@ const validate = (values: ISignUp.Form, props: ISignUp.Props): ISignUp.FormError
 
 // フォーム定義
 const signUp: ISignUp.ReduxForm = reduxForm({
-  form: 'signUp',
   validate,
+  form: 'signUp',
 })(withStyles(styles)(SignUp));
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

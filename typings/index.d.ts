@@ -1,7 +1,7 @@
 import * as Actions from './actions'
 import * as Models from './models'
 
-export * from './components';
+export * from './container';
 export * from './store';
 export * from './models';
 

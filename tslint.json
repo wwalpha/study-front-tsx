@@ -9,6 +9,7 @@
     ],
     "import-name": false,
     "no-unused-variable": true,
-    "semicolon": true
-  },
+    "semicolon": true,
+    "object-shorthand-properties-first": false,
+  }
 }

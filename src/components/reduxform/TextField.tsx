@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { WrappedFieldProps, Field, GenericField, BaseFieldProps } from 'redux-form'
+import { WrappedFieldProps, GenericField, BaseFieldProps } from 'redux-form'
+import { Field } from 'redux-form/immutable'
 import { TextFieldProps as MTextFieldProps } from '@material-ui/core/TextField';
 import MTextField from '@material-ui/core/TextField';
 import { Omit } from '@material-ui/core';

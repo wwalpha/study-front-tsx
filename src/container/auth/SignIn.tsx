@@ -18,11 +18,10 @@ import * as AuthActions from 'src/actions/auth';
 class SignIn extends React.Component<ISignIn.Props, any> {
 
   signIn = (values: ISignIn.Form) => {
-    console.error(values);
-
     const { signInSuccess, signInFailure } = this.props.actions;
+    const inputs = values.toJS();
 
-    Auth.signIn(values.username, values.password)
+    Auth.signIn(inputs.username, inputs.password)
       .then(user => signInSuccess(user))
       .catch(err => signInFailure(err))
   }
@@ -90,14 +89,13 @@ class SignIn extends React.Component<ISignIn.Props, any> {
                   variant="contained"
                   color="secondary"
                   fullWidth
-                  component={(props: any) => <Link to="/register" {...props} />}
+                  component={(props: any) => <Link to="/signup" {...props} />}
                 >
                   Register for free!
                 </Button>
               </Grid>
             </Grid>
           </CardContent>
-
         </Card>
       </form>
     );
@@ -141,12 +139,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: bindActionCreators(AuthActions, dispatch),
 });
 
-const mapStateToProps = () => ({
-  initialValues: {
-  },
-});
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(signIn);

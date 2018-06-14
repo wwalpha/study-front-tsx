@@ -75,7 +75,13 @@ class SignIn extends React.Component<ISignIn.Props, any> {
               spacing={16}
             >
               <Grid item xs={12} >
-                <Button variant="contained" color="primary" fullWidth type="submit">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  type="submit"
+                  component={(props: any) => <Link to="/app" {...props} />}
+                >
                   Login
                 </Button>
               </Grid>

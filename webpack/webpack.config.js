@@ -58,9 +58,9 @@ configs = {
     ]
   },
   plugins: [
-    // new HappyPack({
-    //   loaders: ['babel-loader', 'ts-loader']
-    // }),
+    new HappyPack({
+      loaders: ['babel-loader', 'ts-loader']
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({

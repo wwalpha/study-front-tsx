@@ -1,55 +1,57 @@
 import * as React from 'react';
-import { IForgot } from 'typings';
+import { IForgot as Defs } from 'typings';
 import { Link } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
-import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
+import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
+import { reduxForm } from 'redux-form';
 
-class Forgot extends React.Component<IForgot.Props, any> {
+class Forgot extends React.Component<Defs.Props, any> {
 
   render() {
     const { classes } = this.props;
 
     return (
-      <Card classes={{ root: classes.root }}>
-        <CardContent classes={{ root: classes.cardContent }}>
-          <Grid container spacing={8}>
-            <Grid item xs={12}>
-              <Typography align="center" variant="headline">
-                Forgot Password
+      <form autoComplete="false">
+        <Card classes={{ root: classes.root }}>
+          <CardContent classes={{ root: classes.cardContent }}>
+            <Grid container spacing={8}>
+              <Grid item xs={12}>
+                <Typography align="center" variant="headline">
+                  Forgot Password
               </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                label="Email"
-                margin="dense"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} classes={{ item: classes.createBtn }}>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                component={(props: any) => <Link to="/forgotrenew" {...props} />}>
-                Send Code
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="email"
+                  label="Email"
+                  margin="dense"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} classes={{ item: classes.createBtn }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  component={(props: any) => <Link to="forgotrenew" {...props} />}>
+                  Send Code
               </Button>
+              </Grid>
+              <Grid item xs={12} classes={{ item: classes.returnlink }}>
+                <Typography align="left" variant="body2">
+                  <Link className={classes.loginLink} to=".">Back to Sign In</Link>
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={12} classes={{ item: classes.returnlink }}>
-              <Typography align="left" variant="body2">
-                <Link className={classes.loginLink} to="/">Back to Sign In</Link>
-              </Typography>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card >
+          </CardContent>
+        </Card >
+      </form>
     );
   }
 }
@@ -76,4 +78,17 @@ const styles: StyleRules = {
   },
 };
 
-export default hot(module)(withStyles(styles)<IForgot.Props>(Forgot));
+// 入力値チェック
+const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
+  const errors: Defs.FormErrors = {};
+
+  return errors;
+};
+
+// フォーム定義
+const forgot = reduxForm({
+  form: 'forgot',
+  validate,
+})(withStyles(styles)(Forgot))
+
+export default forgot;

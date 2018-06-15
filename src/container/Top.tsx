@@ -1,19 +1,12 @@
 import * as React from 'react';
-import { IApp, IState, Models } from 'typings';
+import { IAuth, IState } from 'typings';
 import { StyleRulesCallback, withStyles, Theme, Grid } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { Redirect, withRouter, Route } from 'react-router';
 
-class App extends React.Component<IApp.Props, any> {
+class Top extends React.Component<IAuth.Props, any> {
   render() {
-    const { classes, isLoggedIn } = this.props;
-
-    // if (!isLoggedIn) {
-    //   return (
-    //     <Redirect to="/auth" />
-    //   )
-    // }
+    const { classes } = this.props;
 
     return (
       <Grid
@@ -25,7 +18,7 @@ class App extends React.Component<IApp.Props, any> {
           container: classes.root,
         }}
       >
-        <Route children={this.props.children} />
+        {this.props.children}
       </Grid>
     );
   }
@@ -42,6 +35,6 @@ const mapStateToProps = (state: IState) => ({
   isLoggedIn: state.get('auth').isLoggedIn,
 });
 
-export default connect<IApp.StateFromProps, void, void>(
+export default connect<IAuth.StateFromProps, void, IAuth.Props>(
   mapStateToProps,
-)(withStyles(styles)(withRouter(App)));
+)(withStyles(styles)(Top));

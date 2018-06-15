@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history';
 import Amplify from 'aws-amplify';
 import reducer from './src/reducers';
 import createstore from './src/store';
-import App from './src/container/App';
+import Router from './src/container/Router';
 
 
 const history = createBrowserHistory();
@@ -25,9 +25,7 @@ Amplify.configure({
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <HashRouter >
-        <App />
-      </HashRouter>
+      <Router />
     </ConnectedRouter>
   </Provider >,
   root,

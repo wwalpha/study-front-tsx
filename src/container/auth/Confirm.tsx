@@ -43,7 +43,7 @@ class Confirm extends React.Component<IConfirm.Props, any> {
               />
             </Grid>
             <Grid item xs={6} classes={{ item: classes.createBtn }}>
-              <Button variant="contained" color="primary" component={(props: any) => <Link to="/" {...props} />}>
+              <Button variant="contained" color="primary" component={(props: any) => <Link to="." {...props} />}>
                 Confirm
               </Button>
             </Grid>
@@ -54,7 +54,7 @@ class Confirm extends React.Component<IConfirm.Props, any> {
             </Grid>
             <Grid item xs={12}>
               <Typography align="left" variant="body2">
-                <Link className={classes.loginLink} to="/">Back to Signin</Link>
+                <Link className={classes.loginLink} to=".">Back to Signin</Link>
               </Typography>
             </Grid>
           </Grid>

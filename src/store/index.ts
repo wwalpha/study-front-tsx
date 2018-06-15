@@ -6,7 +6,6 @@ import logger from 'redux-logger';
 import reducer from '../reducers';
 import * as Immutable from 'immutable';
 
-
 const store = (history: History): Store<any> => createStore(
   connectRouter(history)(reducer),
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__({

@@ -15,4 +15,5 @@ export interface Props extends InjectedFormProps<Form, any>, WithStyles<StyleRul
   signIn?: (values: Form, dispatch: Dispatch<any>, props: Props) => void | FormErrors<Form> | Promise<any>;
 }
 
-type ReduxForm = DecoratedComponentClass<Form, Partial<ConfigProps<Form, {}>>>
+export type ReduxForm = DecoratedComponentClass<Form, Partial<ConfigProps<Form, {}>>>
+export type FormErrors = FormErrors<Form>

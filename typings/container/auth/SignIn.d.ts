@@ -18,3 +18,4 @@ export interface Props extends InjectedFormProps<Form, any>, WithStyles<StyleRul
 }
 
 export type ReduxForm = DecoratedComponentClass<Form, Partial<ConfigProps<Form, {}>>>
+type FormErrors = FormErrors<Form>

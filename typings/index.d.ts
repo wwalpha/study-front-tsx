@@ -10,6 +10,7 @@ export {
   Models,
 };
 
+
 export as namespace AWSDemo;
 
 declare module 'awsdemo';

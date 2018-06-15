@@ -1,4 +1,7 @@
 export * from './auth'
 
-import * as IApp from './App'
-export { IApp }
+import * as IApp from './App';
+
+export {
+  IApp,
+};

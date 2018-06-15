@@ -15,7 +15,6 @@ const FieldNew = Field as new () => GenericField<AddedFieldProps>;
 const RenderComp = (props: WrappedProps): any => {
   const { input, meta, id } = props;
 
-  console.log(input);
   return (
     <MTextField
       {...props}

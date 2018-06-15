@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { Dispatch, connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { TextField } from 'reduxform/index';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,13 +10,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { ISignUp } from 'typings';
+import { ISignUp as Defs } from 'typings';
 import * as AuthActions from 'src/actions/auth';
 
-class SignUp extends React.Component<ISignUp.Props, any> {
+class SignUp extends React.Component<Defs.Props, any> {
 
   render() {
-    const { classes } = this.props;
+    const { classes, match, location } = this.props;
+
+    console.log(match, location);
 
     return (
       <Card classes={{ root: classes.root }}>
@@ -68,14 +70,14 @@ class SignUp extends React.Component<ISignUp.Props, any> {
                 variant="contained"
                 color="primary"
                 fullWidth
-                component={(props: any) => <Link to="/confirm" {...props} />}
+                component={(props: any) => <Link to="confirm"  {...props} />}
               >
                 CREATE ACCOUNT
               </Button>
             </Grid>
             <Grid item xs={12}>
               <Typography align="center" variant="body2">
-                Already have an account? <Link className={classes.loginLink} to="/">Login</Link>
+                Already have an account? <Link className={classes.loginLink} to=".">Login</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -103,17 +105,17 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: ISignUp.Form, props: ISignUp.Props): ISignUp.FormErrors => {
-  const errors: ISignUp.FormErrors = {};
+const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
+  const errors: Defs.FormErrors = {};
 
   return errors;
 };
 
 // フォーム定義
-const signUp: ISignUp.ReduxForm = reduxForm({
+const signUp = reduxForm({
   validate,
   form: 'signUp',
-})(withStyles(styles)(SignUp));
+})(withStyles(styles)(withRouter(SignUp)));
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: bindActionCreators(AuthActions, dispatch),

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { Dispatch, connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-import { ISignIn } from 'typings';
-import { Link } from 'react-router-dom';
+import { ISignIn as Defs } from 'typings';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import { FormErrors } from 'redux-form';
 import { Auth } from 'aws-amplify';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
@@ -15,9 +15,9 @@ import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 import * as AuthActions from 'src/actions/auth';
 
-class SignIn extends React.Component<ISignIn.Props, any> {
+class SignIn extends React.Component<Defs.Props, any> {
 
-  signIn = (values: ISignIn.Form) => {
+  signIn = (values: Defs.Form) => {
     const { signInSuccess, signInFailure } = this.props.actions;
     const inputs = values.toJS();
 
@@ -27,7 +27,7 @@ class SignIn extends React.Component<ISignIn.Props, any> {
   }
 
   render() {
-    const { classes, handleSubmit } = this.props;
+    const { classes, handleSubmit, match } = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.signIn)} autoComplete="false">
@@ -66,7 +66,7 @@ class SignIn extends React.Component<ISignIn.Props, any> {
               classes={{
                 label: classes.forget,
               }}
-              component={(props: any) => <Link to="/forgot" {...props} />}
+              component={(props: any) => <Link to={`${match.path}/forgot`} {...props} />}
             >
               Forgot your password?
             </Button>
@@ -75,7 +75,13 @@ class SignIn extends React.Component<ISignIn.Props, any> {
               spacing={16}
             >
               <Grid item xs={12} >
-                <Button variant="contained" color="primary" fullWidth type="submit">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  type="submit"
+                  component={(props: any) => <Link to="/" {...props} />}
+                >
                   Login
                 </Button>
               </Grid>
@@ -89,7 +95,7 @@ class SignIn extends React.Component<ISignIn.Props, any> {
                   variant="contained"
                   color="secondary"
                   fullWidth
-                  component={(props: any) => <Link to="/signup" {...props} />}
+                  component={(props: any) => <Link to={`${match.path}/signup`} {...props} />}
                 >
                   Register for free!
                 </Button>
@@ -123,17 +129,17 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: ISignIn.Form, props: ISignIn.Props): FormErrors<ISignIn.Form> => {
-  const errors: FormErrors<ISignIn.Form> = {};
+const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
+  const errors: Defs.FormErrors = {};
 
   return errors;
 };
 
 // フォーム定義
-const signIn: ISignIn.ReduxForm = reduxForm({
+const signIn = reduxForm({
   form: 'signIn',
   validate,
-})(withStyles(styles)(SignIn));
+})(withStyles(styles)(withRouter(SignIn)));
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: bindActionCreators(AuthActions, dispatch),

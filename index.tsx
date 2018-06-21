@@ -18,7 +18,7 @@ Amplify.configure({
   Auth: {
     region: 'ap-northeast-1',
     userPoolId: 'ap-northeast-1_GXUriRkpY',
-    userPoolWebClientId: '4bp5nqfb6kp1ddk0moq4tl23a8',
+    userPoolWebClientId: '4bp5nqfb6kp1ddk0moq4tl23a9',
   },
 });
 

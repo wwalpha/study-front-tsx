@@ -1,20 +1,18 @@
 import { WithStyles, StyleRules } from "@material-ui/core/styles";
 import { InjectedFormProps, FormErrors, ConfigProps, DecoratedComponentClass } from "redux-form";
 import { Dispatch } from "react-redux";
-import { IState } from '../../store'
-import { Auth } from '../../actions'
-import { RouteComponentProps } from "react-router";
+import { IState } from 'src'
+import { Auth } from 'src/actions'
 
 export interface Form {
   username: string,
   password: string,
 }
 
-export interface Props extends InjectedFormProps<Form, any>, WithStyles<StyleRules>, RouteComponentProps<{}> {
+export interface Props extends InjectedFormProps<Form, any>, WithStyles<StyleRules> {
   actions: Auth,
   dispatch?: Dispatch<any>;
   signIn?: (values: Form, dispatch: Dispatch<any>, props: Props) => void | FormErrors<Form> | Promise<any>;
 }
 
-export type ReduxForm = DecoratedComponentClass<Form, Partial<ConfigProps<Form, {}>>>
 export type FormErrors = FormErrors<Form>

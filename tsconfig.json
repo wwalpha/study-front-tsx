@@ -28,6 +28,12 @@
       ],
       "reduxform/*": [
         "./src/components/reduxform/*"
+      ],
+      "app/*": [
+        "./src/container/app/*"
+      ],
+      "auth/*": [
+        "./src/container/auth/*"
       ]
     }
   },
@@ -38,7 +44,6 @@
   ],
   "files": [
     "./typings/types.d.ts",
-    "./typings/index.d.ts",
     "./typings/external.d.ts"
   ],
   "exclude": [

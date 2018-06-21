@@ -2,10 +2,8 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { Dispatch, connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-import { IConfirm } from 'typings';
 import { Link } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
-import { StyleRules, withStyles, WithStyles } from '@material-ui/core/styles';
+import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -13,8 +11,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 import * as AuthActions from 'src/actions/auth';
+import { Props, Form, FormErrors } from './Confirm.d';
 
-class Confirm extends React.Component<IConfirm.Props, any> {
+
+class Confirm extends React.Component<Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -84,14 +84,14 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: IConfirm.Form, props: IConfirm.Props): IConfirm.FormErrors => {
-  const errors: IConfirm.FormErrors = {};
+const validate = (values: Form, props: Props) => {
+  const errors: FormErrors = {};
 
   return errors;
 };
 
 // フォーム定義
-const confirm: IConfirm.ReduxForm = reduxForm({
+const confirm = reduxForm({
   form: 'confirm',
   validate,
 })(withStyles(styles)(Confirm));

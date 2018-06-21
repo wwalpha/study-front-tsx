@@ -1,6 +1,5 @@
 import { Record } from 'immutable';
-import { Models } from 'typings';
-
+import { Models } from 'src';
 
 export default class Auth extends Record<Models.AuthProps>({
   isLoggedIn: false,

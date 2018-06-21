@@ -19,6 +19,8 @@ configs = {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
       src: path.resolve(__dirname, '../src/'),
+      app: path.resolve(__dirname, '../src/container/app'),
+      auth: path.resolve(__dirname, '../src/container/auth'),
       reduxform: path.resolve(__dirname, '../src/components/reduxform/'),
     },
   },

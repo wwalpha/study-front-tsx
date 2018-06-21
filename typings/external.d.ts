@@ -8,3 +8,4 @@
 /// <reference path="../node_modules/connected-react-router/index.d.ts" />
 
 /// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
+/// <reference path="../src/index.d.ts" />

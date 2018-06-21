@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Route, withRouter, Switch } from 'react-router';
-import { IAuth, IState } from 'typings';
 import { StyleRulesCallback, withStyles, Theme, Grid } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
@@ -9,8 +8,10 @@ import SignIn from './SignIn';
 import Confirm from './Confirm';
 import Forgot from './Forgot';
 import ForgotRenew from './ForgotRenew';
+import { IState } from 'src';
+import { Props, StateFromProps } from './Auth.d';
 
-class Auth extends React.Component<IAuth.Props, any> {
+class Auth extends React.Component<Props, any> {
 
   componentWillMount() {
     if (this.props.isLoggedIn) {
@@ -18,7 +19,7 @@ class Auth extends React.Component<IAuth.Props, any> {
     }
   }
 
-  componentWillUpdate(nextProps: IAuth.Props) {
+  componentWillUpdate(nextProps: Props) {
     if (nextProps.isLoggedIn) {
       this.props.history.push('/');
     }
@@ -61,6 +62,6 @@ const mapStateToProps = (state: IState) => ({
   isLoggedIn: state.get('auth').isLoggedIn,
 });
 
-export default connect<IAuth.StateFromProps, void, void>(
+export default connect<StateFromProps, void, void>(
   mapStateToProps,
 )(withStyles(styles)(withRouter(Auth)));

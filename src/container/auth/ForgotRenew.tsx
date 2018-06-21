@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { IForgotRenew as Defs } from 'typings';
 import { Link } from 'react-router-dom';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
+import { reduxForm } from 'redux-form/immutable';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
-import { FormErrors, reduxForm } from 'redux-form';
+import { Props, Form, FormErrors } from './ForgotRenew.d';
 
-class ForgotRenew extends React.Component<Defs.Props, any> {
+
+class ForgotRenew extends React.Component<Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -87,8 +88,8 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
-  const errors: FormErrors<Defs.Form> = {};
+const validate = (values: Form, props: Props): FormErrors => {
+  const errors: FormErrors = {};
 
   return errors;
 };

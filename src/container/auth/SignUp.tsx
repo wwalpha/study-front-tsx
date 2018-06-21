@@ -10,10 +10,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { ISignUp as Defs } from 'typings';
 import * as AuthActions from 'src/actions/auth';
+import { Props, Form, FormErrors } from './SignUp.d';
 
-class SignUp extends React.Component<Defs.Props, any> {
+class SignUp extends React.Component<Props, any> {
 
   render() {
     const { classes, match, location } = this.props;
@@ -105,8 +105,8 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
-  const errors: Defs.FormErrors = {};
+const validate = (values: Form, props: Props): FormErrors => {
+  const errors: FormErrors = {};
 
   return errors;
 };

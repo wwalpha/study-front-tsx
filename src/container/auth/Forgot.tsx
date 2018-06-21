@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IForgot as Defs } from 'typings';
 import { Link } from 'react-router-dom';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,8 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 import { reduxForm } from 'redux-form';
+import { Props, Form, FormErrors } from './Forgot.d';
 
-class Forgot extends React.Component<Defs.Props, any> {
+class Forgot extends React.Component<Props, any> {
 
   render() {
     const { classes } = this.props;
@@ -79,8 +79,8 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
-  const errors: Defs.FormErrors = {};
+const validate = (values: Form, props: Props): FormErrors => {
+  const errors: FormErrors = {};
 
   return errors;
 };

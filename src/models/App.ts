@@ -1,8 +1,8 @@
-import { Record } from 'immutable';
-import { Models } from 'typings';
+// import { Record } from 'immutable';
+// import { Models } from 'awsdemo';
 
-export default class App extends Record<Models.AppProps>({
-  isLoggedIn: false
-}) {
+// export default class App extends Record<Models.AppProps>({
+//   isLoggedIn: false
+// }) {
 
-}
+// }

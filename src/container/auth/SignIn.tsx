@@ -2,9 +2,7 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { Dispatch, connect } from 'react-redux';
 import { reduxForm } from 'redux-form/immutable';
-import { ISignIn as Defs } from 'typings';
-import { Link, withRouter, Redirect } from 'react-router-dom';
-import { FormErrors } from 'redux-form';
+import { Link, withRouter } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import { StyleRules, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,10 +12,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from 'reduxform/index';
 import * as AuthActions from 'src/actions/auth';
+import { Props, Form, FormErrors } from './SignIn.d';
 
-class SignIn extends React.Component<Defs.Props, any> {
+class SignIn extends React.Component<Props, any> {
 
-  signIn = (values: Defs.Form) => {
+  signIn = (values: Form) => {
     const { signInSuccess, signInFailure } = this.props.actions;
     const inputs = values.toJS();
 
@@ -129,8 +128,8 @@ const styles: StyleRules = {
 };
 
 // 入力値チェック
-const validate = (values: Defs.Form, props: Defs.Props): Defs.FormErrors => {
-  const errors: Defs.FormErrors = {};
+const validate = (values: Form, props: Props) => {
+  const errors: FormErrors = {};
 
   return errors;
 };
